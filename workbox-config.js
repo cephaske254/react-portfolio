@@ -30,7 +30,7 @@ module.exports = {
       },
     },
     {
-      urlPattern: /fonts.(googleapis|gstatic).com/,
+      urlPattern: /^https:\/\/fonts\.(?:googleapis|gstatic)\.com\/.*/i,
       handler: "CacheFirst",
       options: {
         cacheName: "google-fonts",
