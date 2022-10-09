@@ -4,7 +4,7 @@ import Container from "@mui/material/Container";
 import Stack from "@mui/material/Stack";
 import Typography from "@mui/material/Typography";
 import { useInView } from "framer-motion";
-import { Fragment, useMemo, useRef } from "react";
+import { Fragment, useEffect, useMemo, useRef } from "react";
 import CustomAppBar from "../components/AppBar";
 import HireMeButton from "../components/HireMeButton";
 import Iconify from "../components/Iconify";
@@ -26,7 +26,7 @@ const technologies = [
 ];
 
 export default function Home() {
-  const [aboutSectionRef, homeSectionRef, portfolioSectionRef] = [
+  const [aboutSectionRef, homeSectionRef, portfolioSectionRef, prev] = [
     useRef<HTMLSpanElement>(null),
     useRef<HTMLDivElement>(null),
     useRef<HTMLDivElement>(null),
@@ -49,9 +49,9 @@ export default function Home() {
         return "about";
 
       default:
-        return "portfolio";
+        return prev.current;
     }
-  }, [about, home, portfolio]);
+  }, [about, home, portfolio, prev]);
 
   const getRef = (value: string) => {
     switch (value) {
@@ -66,6 +66,10 @@ export default function Home() {
         return homeSectionRef;
     }
   };
+
+  useEffect(() => {
+    prev.current = current;
+  }, [current, prev]);
 
   return (
     <Fragment>
