@@ -6,7 +6,7 @@ import registerServiceWorker from "./worker/registerServiceWorker";
 
 function App() {
   useEffect(() => {
-    registerServiceWorker();
+    registerServiceWorker(console.log);
   }, []);
 
   return (

@@ -5,7 +5,7 @@ export const aboutDescription = [
     scalable web and mobile apps.
   </>,
   <>
-    Since the beginning of my journey as a freelance developer 3 years ago, I've
+    Since the beginning of my journey as a software developer 3 years ago, I've
     done remote work for agencies, developed for startups, and collaborated with
     talents to create digital products for both business and consumer use.
   </>,
