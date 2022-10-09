@@ -26,7 +26,7 @@ const technologies = [
 ];
 
 export default function Home() {
-  const [aboutSectionRef, homeSectionRef, portfolioSectionRef, prev] = [
+  const [aboutSectionRef, homeSectionRef, portfolioSectionRef] = [
     useRef<HTMLSpanElement>(null),
     useRef<HTMLDivElement>(null),
     useRef<HTMLDivElement>(null),
