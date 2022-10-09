@@ -29,6 +29,13 @@ module.exports = {
         cacheName: "assets",
       },
     },
+    {
+      urlPattern: /fonts.(googleapis|gstatic).com/,
+      handler: "CacheFirst",
+      options: {
+        cacheName: "google-fonts",
+      },
+    },
   ],
   swDest: "build/sw.js",
   ignoreURLParametersMatching: [/^utm_/, /^fbclid$/],
