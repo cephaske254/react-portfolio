@@ -49,9 +49,9 @@ export default function Home() {
         return "about";
 
       default:
-        return prev.current;
+        return "portfolio";
     }
-  }, [about, home, portfolio, prev]);
+  }, [about, home, portfolio]);
 
   const getRef = (value: string) => {
     switch (value) {
