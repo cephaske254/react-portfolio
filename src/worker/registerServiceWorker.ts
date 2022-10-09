@@ -38,7 +38,10 @@ async function registerServiceWorker() {
                 })
             );
           }),
-        ])
+        ]).then((e) => {
+          console.log("done");
+          return e;
+        })
       );
     });
 
