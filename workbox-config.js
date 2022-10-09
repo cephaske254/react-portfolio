@@ -24,7 +24,7 @@ module.exports = {
     },
     {
       urlPattern: /\.(?:css|js)$/,
-      handler: "StaleWhileRevalidate",
+      handler: "CacheFirst",
       options: {
         cacheName: "assets",
       },
