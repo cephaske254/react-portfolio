@@ -35,7 +35,7 @@ const palette: ThemeOptions["palette"] = {
   background: {
     default: "#202020",
     // paper: "#25262a",
-    paper: darken("#202020", 0.3),
+    paper: darken("#1F222C", 0),
   },
 };
 

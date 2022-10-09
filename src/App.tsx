@@ -1,13 +1,18 @@
 import CssBaseline from "@mui/material/CssBaseline";
-import { RouterProvider } from "react-router-dom";
+import { useEffect } from "react";
+import Home from "./pages/Home";
 import { ThemeProvider } from "./theme";
-import router from "./utils/router";
+import registerServiceWorker from "./worker/registerServiceWorker";
 
 function App() {
+  useEffect(() => {
+    registerServiceWorker();
+  }, []);
+
   return (
     <ThemeProvider>
       <CssBaseline enableColorScheme />
-      <RouterProvider router={router} />
+      <Home />
     </ThemeProvider>
   );
 }

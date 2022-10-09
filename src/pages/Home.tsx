@@ -3,10 +3,16 @@ import Button from "@mui/material/Button";
 import Container from "@mui/material/Container";
 import Stack from "@mui/material/Stack";
 import Typography from "@mui/material/Typography";
-import { Fragment } from "react";
+import { useInView } from "framer-motion";
+import { Fragment, useMemo, useRef } from "react";
+import CustomAppBar from "../components/AppBar";
+import HireMeButton from "../components/HireMeButton";
 import Iconify from "../components/Iconify";
 import ImageComponent from "../components/ImageComponent";
+import { APPBAR } from "../constants";
 import AboutSection from "../sections/About";
+import FeaturedSection from "../sections/Featured";
+import Footer from "../sections/Footer";
 import { fonts } from "../theme/typography";
 import icons from "../utils/icons";
 
@@ -19,15 +25,56 @@ const technologies = [
   "flutter",
 ];
 
-export default function Home({ pathname }: any) {
+export default function Home() {
+  const [aboutSectionRef, homeSectionRef, portfolioSectionRef, prev] = [
+    useRef<HTMLSpanElement>(null),
+    useRef<HTMLDivElement>(null),
+    useRef<HTMLDivElement>(null),
+    useRef("home"),
+  ];
+
+  const [home, about, portfolio] = [
+    useInView(homeSectionRef),
+    useInView(aboutSectionRef),
+    useInView(portfolioSectionRef),
+  ];
+
+  const current = useMemo(() => {
+    switch (true) {
+      case home:
+        return "home";
+      case portfolio:
+        return "portfolio";
+      case about:
+        return "about";
+
+      default:
+        return prev.current;
+    }
+  }, [about, home, portfolio, prev]);
+
+  const getRef = (value: string) => {
+    switch (value) {
+      case "home":
+        return homeSectionRef;
+      case "portfolio":
+        return portfolioSectionRef;
+      case "about":
+        return aboutSectionRef;
+
+      default:
+        return homeSectionRef;
+    }
+  };
+
   return (
     <Fragment>
-      {/*  */}
+      <span style={{ height: APPBAR.defaultHeight }} ref={homeSectionRef} />
+
       <Container
         sx={({ breakpoints }) => ({
           height: `100vh`,
           userSelect: "none",
-          // padding: [spacing(APPBAR.defxaultHeight / 8), 0, 0, 0],
           display: "flex",
 
           [breakpoints.down("sm")]: {
@@ -40,6 +87,18 @@ export default function Home({ pathname }: any) {
           },
         })}
       >
+        <CustomAppBar
+          active={current}
+          onNavigate={(to) => {
+            const ref = getRef(to);
+            window.scrollTo({
+              behavior: "smooth",
+              top:
+                (ref.current?.offsetTop ?? APPBAR.defaultHeight) -
+                APPBAR.defaultHeight,
+            });
+          }}
+        />
         <div>
           <Box
             sx={({ palette }) => ({
@@ -79,9 +138,7 @@ export default function Home({ pathname }: any) {
 
         <Box position="absolute" bottom={50} paddingLeft={2}>
           <Stack direction="row" spacing={2}>
-            <Button variant="contained" sx={{ px: 4 }} disableElevation>
-              Hire Me
-            </Button>
+            <HireMeButton />
             <Button
               variant="text"
               sx={{ px: 3 }}
@@ -106,7 +163,20 @@ export default function Home({ pathname }: any) {
                 </Box>
               }
             >
-              <Typography component="span" color="grey.200" variant="button">
+              <Typography
+                component="span"
+                color="grey.200"
+                variant="button"
+                onClick={() => {
+                  const top =
+                    (aboutSectionRef.current?.offsetTop ??
+                      APPBAR.defaultHeight) - APPBAR.defaultHeight;
+                  window.scrollTo({
+                    top,
+                    behavior: "smooth",
+                  });
+                }}
+              >
                 Start Tour
               </Typography>
             </Button>
@@ -114,7 +184,17 @@ export default function Home({ pathname }: any) {
         </Box>
       </Container>
 
-      <AboutSection />
+      <AboutSection>
+        <span ref={aboutSectionRef} />
+      </AboutSection>
+      {/*  */}
+      <FeaturedSection>
+        <span ref={portfolioSectionRef} />
+      </FeaturedSection>
+
+      {/*  */}
+
+      <Footer />
     </Fragment>
   );
 }

@@ -1,21 +1,29 @@
 import Box from "@mui/material/Box";
 import Container from "@mui/material/Container";
 import Grid from "@mui/material/Grid";
+import List from "@mui/material/List";
+import ListItem from "@mui/material/ListItem";
+import ListItemText from "@mui/material/ListItemText";
 import Paper from "@mui/material/Paper";
 import Stack from "@mui/material/Stack";
-import { alpha } from "@mui/material/styles";
+import { alpha, styled } from "@mui/material/styles";
 import Typography from "@mui/material/Typography";
-import { Fragment } from "react";
+import React, { Fragment } from "react";
 import { fonts, fontWeights } from "../theme/typography";
 import { aboutDescription } from "../utils/constants";
 
-export default function AboutSection() {
+export default function AboutSection({
+  children,
+}: {
+  children?: React.ReactNode;
+}) {
   return (
     <Fragment>
-      <Paper sx={{ borderRadius: 0 }}>
+      <Paper elevation={0} sx={{ borderRadius: 0 }}>
         <Container
           sx={{
             pt: 4,
+            pb: 5,
             userSelect: "none",
             px: {
               xs: 2,
@@ -23,6 +31,7 @@ export default function AboutSection() {
             },
           }}
         >
+          {children}
           <Typography
             variant="h2"
             fontFamily={fonts.mono}
@@ -36,11 +45,18 @@ export default function AboutSection() {
             <Grid item md={6} xs={12}>
               {aboutDescription.map((desc, index) => (
                 <Typography
-                  variant="body1"
+                  variant="body2"
                   color="grey.300"
-                  fontWeight={fontWeights.primary[300]}
                   key={index}
-                  mb={4}
+                  mb={
+                    index !== aboutDescription.length - 1
+                      ? {
+                          xs: 3,
+                          sm: 4,
+                          md: 6,
+                        }
+                      : 0
+                  }
                   letterSpacing={1}
                 >
                   {desc}
@@ -54,8 +70,16 @@ export default function AboutSection() {
               item
               md={6}
               xs={12}
-              sx={{ display: "flex", flexDirection: "row", mb: 2 }}
+              sx={{ display: "flex", flexDirection: "column", mb: 2 }}
             >
+              <Typography
+                variant="caption"
+                fontFamily={fonts.mono}
+                mb={0.5}
+                color="primary.light"
+              >
+                ~ What I do
+              </Typography>
               <Stack spacing={1} width="100%">
                 {[
                   {
@@ -103,8 +127,115 @@ export default function AboutSection() {
               </Stack>
             </Grid>
           </Grid>
+
+          {/*spacer  */}
+          <Box height={50} />
+          <Typography color="grey.300" variant="h6" mb={1}>
+            <Span>Tools</Span> &{" "}
+            <Typography
+              component="span"
+              color="primary.main"
+              fontWeight={fontWeights.primary[400]}
+            >
+              technologies
+            </Typography>
+          </Typography>
+          <Stack direction="row" justifyContent="space-between">
+            {sections.map((section) => (
+              <Box key={section.name} sx={{ paddingLeft: 0 }}>
+                <List>
+                  {section.items.map((item) => (
+                    <ListItem disablePadding key={item}>
+                      <ListItemText
+                        primaryTypographyProps={{
+                          variant: "body2",
+                          sx: {
+                            color: "grey.500",
+                            fontFamily: fonts.mono,
+                            fontWeight: fontWeights.mono[400],
+                          },
+                        }}
+                      >
+                        {item}
+                      </ListItemText>
+                    </ListItem>
+                  ))}
+                </List>
+              </Box>
+            ))}
+          </Stack>
+
+          <Box height={40} />
+
+          <Stack
+            direction="row"
+            spacing={2}
+            px={0}
+            justifyContent={{ xs: "space-between", md: "center" }}
+          >
+            {[
+              {
+                number: 3,
+                descs: ["Years of", "Experience"],
+              },
+              {
+                number: 30,
+                descs: ["Projects", "Completed"],
+              },
+            ].map((info, index) => (
+              <Box
+                key={index}
+                sx={{
+                  display: "flex",
+                  flexDirection: "row",
+                  alignItems: "center",
+                }}
+              >
+                <Typography
+                  variant="h1"
+                  color="grey.200"
+                  component="div"
+                  display="flex"
+                  flexDirection="row"
+                  justifyContent="space-between"
+                  overflow="hidden"
+                >
+                  {info.number}
+                  <span>+</span>
+                </Typography>
+                <div>
+                  {info.descs.map((desc) => (
+                    <Typography
+                      key={desc}
+                      variant="body2"
+                      color="grey.500"
+                      textAlign="justify"
+                    >
+                      {desc.toUpperCase()}
+                    </Typography>
+                  ))}
+                </div>
+              </Box>
+            ))}
+          </Stack>
         </Container>
       </Paper>
     </Fragment>
   );
 }
+
+const sections = [
+  { name: "Frontend", items: ["React", "Angular", "Vue", "Ember", "Gatsby"] },
+  {
+    name: "Backend",
+    items: ["Django", "Flask", "PHP Laravel", "Node Express"],
+  },
+  { name: "Mobile", items: ["React Native", "Flutter", "Expo"] },
+];
+
+const Span = styled("span")(({ theme: { palette } }) => ({
+  borderColor: palette.primary.main,
+  borderWidth: 0,
+  borderBottomWidth: 3,
+  // borderStyle: "solid",
+}));

@@ -7,7 +7,7 @@ import useResponsive from "../hooks/useResponsive";
 const Image = styled("img")(
   ({ theme: { breakpoints, transitions, palette } }) => ({
     alignSelf: "end",
-    transition: transitions.create(["width", "height"], {
+    transition: transitions.create(["width", "height", "scale"], {
       delay: 0,
       easing: "ease-in-out",
       duration: ".5s",
@@ -51,6 +51,7 @@ const Image = styled("img")(
 
 export default function ImageComponent() {
   const imageRef = useRef<HTMLImageElement>(null);
+  const prev = useRef(0);
 
   const isDesktop = useResponsive("up", "sm");
 
@@ -59,15 +60,21 @@ export default function ImageComponent() {
     if (imageRef.current) {
       const halfHeight = imageRef.current.height / 2;
       const rad = pos * 10;
-      imageRef.current.style.borderRadius = `${
-        rad <= halfHeight ? rad : halfHeight
-      }px`;
+      const greater = rad <= halfHeight;
+      imageRef.current.style.borderRadius = `${greater ? rad : halfHeight}px`;
+
+      if (prev.current < pos) imageRef.current.style.scale = "90%";
+      else imageRef.current.style.scale = "100%";
     }
+    prev.current = pos;
   };
 
   const unmountScrollListener = () => {
     window.removeEventListener("scroll", handleScroll);
-    if (imageRef.current) imageRef.current.style.borderRadius = "50%";
+    if (imageRef.current) {
+      imageRef.current.style.borderRadius = "50%";
+      imageRef.current.style.scale = "100%";
+    }
   };
 
   useEffect(() => {

@@ -1,12 +1,12 @@
 import MuiAppbar from "@mui/material/AppBar";
 import Box from "@mui/material/Box";
 import Container from "@mui/material/Container";
+import Link from "@mui/material/Link";
 import { alpha, styled } from "@mui/material/styles";
 import Toolbar from "@mui/material/Toolbar";
 import Typography from "@mui/material/Typography";
 import { Fragment } from "react";
 
-import { Link, Outlet, useLocation } from "react-router-dom";
 import { fonts, fontWeights } from "../theme/typography";
 import { pxToRem } from "../utils/getFontValue";
 
@@ -19,15 +19,15 @@ const AppBar = styled(MuiAppbar)(({ theme: { palette } }) => ({
 const routes = [
   {
     title: "Home",
-    path: "/",
+    path: "#",
   },
   {
     title: "About Me",
-    path: "/about",
+    path: "#about",
   },
   {
     title: "Portfolio",
-    path: "/portfolio",
+    path: "#portfolio",
   },
 ];
 
@@ -47,9 +47,13 @@ const ButtonLink = styled(Link, {
   paddingRight: 15,
 }));
 
-export default function CustomAppBar() {
-  let active = useLocation().pathname;
-
+export default function CustomAppBar({
+  active,
+  onNavigate,
+}: {
+  active: string;
+  onNavigate: (to: string) => void;
+}) {
   return (
     <Fragment>
       <AppBar elevation={1}>
@@ -72,11 +76,18 @@ export default function CustomAppBar() {
               }}
             >
               {routes.map((route) => {
+                const isActive =
+                  route.path.includes(active) ||
+                  (route.path === "#" && active === "home");
                 return (
                   <ButtonLink
                     key={route.title}
-                    active={active === route.path}
-                    to={route.path}
+                    active={isActive}
+                    href={route.path}
+                    onClick={(e) => {
+                      e.preventDefault();
+                      onNavigate(route.path.replace("#", "") || "home");
+                    }}
                   >
                     {route.title}
                   </ButtonLink>
@@ -86,7 +97,6 @@ export default function CustomAppBar() {
           </Toolbar>
         </Container>
       </AppBar>
-      <Outlet />
     </Fragment>
   );
 }
