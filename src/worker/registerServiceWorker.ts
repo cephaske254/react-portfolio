@@ -3,8 +3,13 @@ import { Workbox } from "workbox-window";
 async function registerServiceWorker() {
   if ("navigator" in window && process.env.NODE_ENV === "production") {
     const wb = new Workbox("/sw.js");
-    wb.messageSkipWaiting();
-    wb.register();
+    const registration = await wb.register();
+
+    if (registration?.waiting) wb.messageSkipWaiting();
+
+    registration?.addEventListener("updatefound", (e) => {
+      console.log("SW update found");
+    });
   } else if (
     process.env.NODE_ENV !== "production" &&
     window.navigator &&
