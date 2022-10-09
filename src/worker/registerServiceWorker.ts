@@ -1,27 +1,45 @@
+/* eslint-disable no-restricted-globals */
 async function registerServiceWorker() {
   if ("navigator" in window && process.env.NODE_ENV === "production") {
     const { Workbox } = await import("workbox-window");
 
     const wb = new Workbox("/sw.js");
 
-    // eslint-disable-next-line no-restricted-globals
-    self.addEventListener("activate", async function () {
-      await caches.keys().then(function (cacheNames) {
-        return Promise.all(
-          cacheNames
-            .filter(function (_cacheName) {
-              // Return true if you want to remove this cache,
-              // but remember that caches are shared across
-              // the whole origin
-              return true;
-            })
-            .map(function (cacheName) {
-              console.log("clearing cache", cacheName);
+    self.addEventListener("install", () => {
+      // The promise that skipWaiting() returns can be safely ignored.
+      // @ts-ignore
+      self.skipWaiting();
 
-              return caches.delete(cacheName);
-            })
-        );
-      });
+      // Perform any other actions required for your
+      // service worker to install, potentially inside
+      // of event.waitUntil();
+    });
+
+    // eslint-disable-next-line no-restricted-globals
+    self.addEventListener("activate", function (e) {
+      // @ts-ignore
+      e.waitUntil(
+        Promise.all([
+          // @ts-ignore
+          self.clients.claim(),
+          caches.keys().then(function (cacheNames) {
+            return Promise.all(
+              cacheNames
+                .filter(function (_cacheName) {
+                  // Return true if you want to remove this cache,
+                  // but remember that caches are shared across
+                  // the whole origin
+                  return true;
+                })
+                .map(function (cacheName) {
+                  console.log("clearing cache", cacheName);
+
+                  return caches.delete(cacheName);
+                })
+            );
+          }),
+        ])
+      );
     });
 
     wb.register();
