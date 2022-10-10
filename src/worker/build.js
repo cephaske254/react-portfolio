@@ -8,7 +8,7 @@ generateSW({
   clientsClaim: true,
   skipWaiting: true,
   sourcemap: false,
-  navigationPreload: true,
+  navigationPreload: false,
   cleanupOutdatedCaches: true,
   mode: "production",
   navigateFallback: "/offline.html",
