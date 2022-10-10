@@ -9,22 +9,12 @@ generateSW({
   skipWaiting: true,
   sourcemap: false,
   cleanupOutdatedCaches: true,
+  navigationPreload: true,
   mode: "production",
   navigateFallback: "/offline.html",
   navigateFallbackAllowlist: [],
+
   runtimeCaching: [
-    {
-      urlPattern: "/",
-      handler: "NetworkFirst",
-      method: "GET",
-      options: {
-        expiration: {
-          maxAgeSeconds: 86400,
-          maxEntries: 1,
-        },
-        cacheName: "start-url",
-      },
-    },
     {
       urlPattern: /^https:\/\/fonts\.(?:googleapis|gstatic)\.com\/.*/i,
       handler: "CacheFirst",
@@ -47,6 +37,15 @@ generateSW({
       method: "GET",
       options: {
         cacheName: "static-files",
+      },
+    },
+    {
+      urlPattern: new RegExp("(.*?)"),
+      handler: ({ url }) => {
+        if (url.pathname === "/" || url.pathname === "") {
+          return "NetworkFirst";
+        }
+        return "CacheFirst";
       },
     },
   ],
