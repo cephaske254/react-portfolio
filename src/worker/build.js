@@ -8,10 +8,10 @@ generateSW({
   clientsClaim: true,
   skipWaiting: true,
   sourcemap: false,
-  navigationPreload: false,
   cleanupOutdatedCaches: true,
   mode: "production",
   navigateFallback: "/offline.html",
+  navigateFallbackAllowlist: [],
   runtimeCaching: [
     {
       urlPattern: "/",
