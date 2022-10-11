@@ -136,7 +136,7 @@ const FeaturedItem = ({
 };
 
 const gridItemVariants = {
-  hidden: { opacity: 0, translateX: -20, transition: { duration: 1 } },
+  hidden: { opacity: 0, translateX: -100, transition: { duration: 1 } },
   show: { opacity: 1, translateX: 0, transition: { duration: 1 } },
 };
 const gridItemVariantsOdd = {
@@ -144,7 +144,7 @@ const gridItemVariantsOdd = {
   hidden: {
     ...gridItemVariants.hidden,
     opacity: 0,
-    translateX: 20,
+    translateX: 100,
   },
 };
 
