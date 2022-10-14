@@ -1,5 +1,5 @@
 const icons = {
-  fiver: "jam:fiverr-circle",
+  fiverr: "simple-icons:fiverr",
   play: "bi:play-fill",
 };
 

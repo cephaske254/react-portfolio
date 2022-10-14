@@ -12,7 +12,8 @@ import ImageComponent from "../components/ImageComponent";
 import { APPBAR } from "../constants";
 import AboutSection from "../sections/About";
 import FeaturedSection from "../sections/Featured";
-import Footer from "../sections/Footer";
+import FooterSection from "../sections/Footer";
+import HireMeSection from "../sections/HireMe";
 import { fonts } from "../theme/typography";
 import icons from "../utils/icons";
 
@@ -198,7 +199,9 @@ export default function Home() {
 
       {/*  */}
 
-      <Footer />
+      <HireMeSection />
+      {/* footer */}
+      <FooterSection />
     </Fragment>
   );
 }

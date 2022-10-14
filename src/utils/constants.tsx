@@ -1,3 +1,5 @@
+import icons from "./icons";
+
 export const aboutDescription = [
   <>
     I'm a creative fullstack developer with <strong>3+</strong> years of
@@ -15,16 +17,16 @@ export const email = "cephasktoo@gmail.com";
 export const phone = "+254798950450";
 
 export const socials = {
-  fiver: {
-    icon: "",
+  fiverr: {
+    icon: icons.fiverr,
     link: "https://www.fiverr.com/cephasktoo",
   },
   whatsapp: {
-    icon: "",
+    icon: "bi:whatsapp",
     link: `https://api.whatsapp.com/send?phone=${phone}`,
   },
   mail: {
-    icon: "",
+    icon: "fe:email",
     link: email,
   },
 };

@@ -9,6 +9,7 @@ import { Fragment } from "react";
 
 import { fonts, fontWeights } from "../theme/typography";
 import { pxToRem } from "../utils/getFontValue";
+import HireMeButton from "./HireMeButton";
 
 const AppBar = styled(MuiAppbar)(({ theme: { palette } }) => ({
   backgroundColor: "transparent",
@@ -93,6 +94,17 @@ export default function CustomAppBar({
                   </ButtonLink>
                 );
               })}
+
+              <HireMeButton
+                size="small"
+                sx={{
+                  px: 2,
+                  display: {
+                    xs: "none",
+                    md: "initial",
+                  },
+                }}
+              />
             </Box>
           </Toolbar>
         </Container>
