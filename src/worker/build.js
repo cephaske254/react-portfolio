@@ -32,6 +32,14 @@ generateSW({
       },
     },
     {
+      urlPattern: /^https:\/\/api.iconify.design/i,
+      handler: "CacheFirst",
+      method: "GET",
+      options: {
+        cacheName: "icons",
+      },
+    },
+    {
       urlPattern: /\.(?:css|js)$/i,
       handler: "StaleWhileRevalidate",
       method: "GET",
