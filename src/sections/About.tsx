@@ -1,6 +1,8 @@
 import Box from "@mui/material/Box";
+import Button from "@mui/material/Button";
 import Container from "@mui/material/Container";
 import Grid from "@mui/material/Grid";
+import Link from "@mui/material/Link";
 import List from "@mui/material/List";
 import ListItem from "@mui/material/ListItem";
 import ListItemText from "@mui/material/ListItemText";
@@ -9,8 +11,10 @@ import Stack from "@mui/material/Stack";
 import { alpha, styled } from "@mui/material/styles";
 import Typography from "@mui/material/Typography";
 import React, { Fragment } from "react";
+import Iconify from "../components/Iconify";
 import { fonts, fontWeights } from "../theme/typography";
-import { aboutDescription } from "../utils/constants";
+import { aboutDescription, socials } from "../utils/constants";
+import icons from "../utils/icons";
 
 export default function AboutSection({
   children,
@@ -129,7 +133,7 @@ export default function AboutSection({
           </Grid>
 
           {/*spacer  */}
-          <Box height={50} />
+          <Box marginTop={5} />
           <Typography color="grey.300" variant="h6" mb={1}>
             <Span>Tools</Span> &{" "}
             <Typography
@@ -140,6 +144,7 @@ export default function AboutSection({
               technologies
             </Typography>
           </Typography>
+
           <Stack direction="row" justifyContent="space-between">
             {sections.map((section) => (
               <Box key={section.name} sx={{ paddingLeft: 0 }}>
@@ -217,7 +222,22 @@ export default function AboutSection({
                 </div>
               </Box>
             ))}
+
+            {/*  */}
           </Stack>
+          <Box display="flex" justifyContent="center" mt={1}>
+            <Button
+              disableElevation
+              color="primary"
+              variant="text"
+              startIcon={<Iconify icon={icons.github} />}
+              component={Link}
+              href={socials.github.link}
+              target="_blank"
+            >
+              Github
+            </Button>
+          </Box>
         </Container>
       </Paper>
     </Fragment>

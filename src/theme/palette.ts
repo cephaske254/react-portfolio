@@ -1,4 +1,4 @@
-import { alpha, darken, ThemeOptions } from "@mui/material/styles";
+import { alpha, darken, lighten, ThemeOptions } from "@mui/material/styles";
 
 const GREY = {
   0: "#FFFFFF",
@@ -29,9 +29,19 @@ const PRIMARY = {
   // contrastText: "#fefdf8",
 };
 
+const successMain = "#1dbf73";
+
+const SUCCESS = {
+  light: lighten(successMain, 0.7),
+  main: successMain,
+  dark: darken(successMain, 0.3),
+  contrastText: GREY[300],
+};
+
 const palette: ThemeOptions["palette"] = {
   grey: GREY,
   primary: PRIMARY,
+  success: SUCCESS,
   background: {
     default: "#202020",
     // paper: "#25262a",

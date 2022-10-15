@@ -4,7 +4,7 @@ import IconButton from "@mui/material/IconButton";
 import Link from "@mui/material/Link";
 import Paper from "@mui/material/Paper";
 import Stack from "@mui/material/Stack";
-import { lighten } from "@mui/material/styles";
+import { darken, lighten } from "@mui/material/styles";
 import Typography from "@mui/material/Typography";
 import Iconify from "../components/Iconify";
 import { socials } from "../utils/constants";
@@ -29,9 +29,9 @@ export default function HireMeSection() {
           color="primary.main"
           textAlign="center"
           sx={({ palette }) => ({
-            background: `-webkit-linear-gradient(30deg, ${
+            background: `-webkit-linear-gradient(45deg, ${
               palette.primary.main
-            }, ${lighten(palette.primary.light, 0.4)})`,
+            }, ${lighten(palette.primary.light, 0.5)})`,
             WebkitBackgroundClip: "text",
             WebkitTextFillColor: "transparent",
           })}
@@ -54,10 +54,16 @@ export default function HireMeSection() {
           justifyItems="center"
         >
           <IconButton
-            color="primary"
             centerRipple
             LinkComponent={Link}
             href={socials.whatsapp.link}
+            sx={({ palette }) => ({
+              background: palette.primary.main,
+              color: palette.primary.contrastText,
+              "&:hover": {
+                background: darken(palette.primary.main, 0.1),
+              },
+            })}
           >
             <Iconify icon={socials.whatsapp.icon} />
           </IconButton>
@@ -67,6 +73,8 @@ export default function HireMeSection() {
             target="_blank"
             disableElevation
             sx={{ px: 4 }}
+            // color="success"
+            variant="outlined"
           >
             Fiverr
           </Button>
