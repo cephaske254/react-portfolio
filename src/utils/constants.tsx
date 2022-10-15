@@ -22,16 +22,26 @@ export const socials = {
     link: "https://www.fiverr.com/cephasktoo",
   },
   whatsapp: {
-    icon: "bi:whatsapp",
+    icon: icons.whatsapp,
     link: `https://api.whatsapp.com/send?phone=${phone}`,
   },
   mail: {
-    icon: "fe:email",
+    icon: icons.email,
     link: email,
+    prefix: "mailto:",
+  },
+  github: {
+    icon: icons.github,
+    link: "https://github.com/cephaske254",
   },
 };
 
-export const socialsMap = Object.entries(socials).map(([key, val]) => ({
+export const socialsMap: {
+  icon: string;
+  link: string;
+  prefix?: string;
+  key: string;
+}[] = Object.entries(socials).map(([key, val]) => ({
   ...val,
   key,
 }));

@@ -30,17 +30,19 @@ const Image = styled("img")(
       borderStyle: "solid",
       // top: `calc(50% - 100px)`,
       borderRadius: 100,
+      position: "relative",
     },
 
     [breakpoints.up("sm")]: {
       width: 450,
-      // position: "absolute",
-      // right: 100,
+      position: "absolute",
+      right: 100,
     },
 
     [breakpoints.up("md")]: {
       position: "relative",
       width: 650,
+      right: 0,
     },
     [breakpoints.up("lg")]: {
       width: 700,
