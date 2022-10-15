@@ -9,7 +9,7 @@ generateSW({
   skipWaiting: true,
   sourcemap: false,
   cleanupOutdatedCaches: true,
-  navigationPreload: true,
+  navigationPreload: false,
   mode: "production",
   navigateFallback: "/offline.html",
   navigateFallbackAllowlist: [],
