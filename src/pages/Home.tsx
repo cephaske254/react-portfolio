@@ -147,6 +147,15 @@ export default function Home() {
             <Button
               variant="text"
               sx={{ px: 3 }}
+              onClick={() => {
+                const top =
+                  (aboutSectionRef.current?.offsetTop ?? APPBAR.defaultHeight) -
+                  APPBAR.defaultHeight;
+                window.scrollTo({
+                  top,
+                  behavior: "smooth",
+                });
+              }}
               startIcon={
                 <Box
                   sx={({ palette }) => ({
@@ -172,15 +181,11 @@ export default function Home() {
                 component="span"
                 color="grey.200"
                 variant="button"
-                onClick={() => {
-                  const top =
-                    (aboutSectionRef.current?.offsetTop ??
-                      APPBAR.defaultHeight) - APPBAR.defaultHeight;
-                  window.scrollTo({
-                    top,
-                    behavior: "smooth",
-                  });
-                }}
+                sx={({ breakpoints, palette }) => ({
+                  [breakpoints.between("sm", "md")]: {
+                    color: palette.primary.main,
+                  },
+                })}
               >
                 Start Tour
               </Typography>
