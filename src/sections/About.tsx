@@ -16,6 +16,13 @@ import { fonts, fontWeights } from "../theme/typography";
 import { aboutDescription, socials } from "../utils/constants";
 import icons from "../utils/icons";
 
+const getYearsOfExperience = () => {
+  const date = Date.now();
+  const from = new Date("2020-02-28").getTime();
+
+  return Math.round((date - from) / (60 * 60 * 1000 * 24) / 365);
+};
+
 export default function AboutSection({
   children,
 }: {
@@ -180,7 +187,7 @@ export default function AboutSection({
           >
             {[
               {
-                number: 3,
+                number: getYearsOfExperience(),
                 descs: ["Years of", "Experience"],
               },
               {
