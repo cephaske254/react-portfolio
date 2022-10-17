@@ -6,9 +6,9 @@ import Stack from "@mui/material/Stack";
 import { styled } from "@mui/material/styles";
 import Typography from "@mui/material/Typography";
 import Iconify from "../components/Iconify";
-import useResponsive from "../hooks/useResponsive";
-import { fontWeights } from "../theme/typography";
+import { fonts, fontWeights } from "../theme/typography";
 import { socialsMap } from "../utils/constants";
+import { pxToRem } from "../utils/getFontValue";
 
 const ALink = styled(Link)(() => ({
   fontSize: "inherit",
@@ -25,32 +25,55 @@ const { mui, netlify, react, iconify } = {
 };
 
 export default function FooterSection() {
-  const isTablet = useResponsive("up", "md");
+  // const isTablet = useResponsive("up", "md");
 
   return (
     <Container
       sx={{
         display: "flex",
-        py: 4,
+        flexDirection: {
+          xs: "column-reverse",
+          md: "row",
+        },
+        alignItems: {
+          xs: "center",
+        },
         justifyContent: {
           xs: "center",
           md: "space-between",
         },
+        pb: 2,
+        pt: 2,
       }}
     >
-      {isTablet && (
-        <Box color="grey.400">
-          <Typography variant="caption" component="p">
-            Designed and developed by Cephas Too.
-          </Typography>
-          <Typography variant="caption" component="p">
-            Built with <ALink href={react}>React</ALink> &{" "}
-            <ALink href={mui}>MUI</ALink>, hosted on{" "}
-            <ALink href={netlify}>Netlify</ALink>. Icons by{" "}
-            <ALink href={iconify}>Iconify</ALink>
-          </Typography>
-        </Box>
-      )}
+      {/* {isTablet && ( */}
+
+      <Box
+        color="grey.400"
+        sx={{
+          mt: {
+            xs: 1,
+            md: 0,
+          },
+        }}
+        fontSize={{
+          xs: pxToRem(10),
+          md: pxToRem(12),
+        }}
+        fontFamily={fonts.primary}
+        fontWeight={fontWeights.primary[300]}
+      >
+        <Typography fontSize="inherit" component="p">
+          Designed and developed by Cephas Too.
+        </Typography>
+        <Typography fontSize="inherit" component="p">
+          Built with <ALink href={react}>React</ALink> &{" "}
+          <ALink href={mui}>MUI</ALink>, hosted on{" "}
+          <ALink href={netlify}>Netlify</ALink>. Icons by{" "}
+          <ALink href={iconify}>Iconify</ALink>
+        </Typography>
+      </Box>
+      {/* )} */}
 
       <Stack spacing={2} direction="row">
         {socialsMap.map((social) => (
