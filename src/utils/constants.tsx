@@ -25,6 +25,10 @@ export const socials = {
     icon: icons.whatsapp,
     link: `https://api.whatsapp.com/send?phone=${phone}`,
   },
+  linkedin: {
+    icon: icons.linkedin,
+    link: "https://linkedin.com/in/cephastoo",
+  },
   mail: {
     icon: icons.email,
     link: email,
