@@ -23,7 +23,7 @@ export const socials = {
   },
   whatsapp: {
     icon: icons.whatsapp,
-    link: `https://api.whatsapp.com/send?phone=${phone}`,
+    link: `https://wa.me/${phone}`,
   },
   linkedin: {
     icon: icons.linkedin,
