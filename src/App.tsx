@@ -21,6 +21,7 @@ function App() {
   useEffect(() => {
     checkProtocol().then((exists) => {
       setHandler(exists);
+      alert(exists);
     });
   }, []);
 
