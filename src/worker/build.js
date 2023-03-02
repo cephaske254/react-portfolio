@@ -12,7 +12,7 @@ generateSW({
   navigationPreload: false,
   mode: "production",
   navigateFallback: "/",
-  navigateFallbackAllowlist: ["*"],
+  navigateFallbackAllowlist: [],
 
   runtimeCaching: [
     {
