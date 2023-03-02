@@ -21,6 +21,10 @@ export const socials = {
     icon: icons.fiverr,
     link: "https://www.fiverr.com/cephasktoo",
   },
+  download: {
+    icon: icons.download,
+    link: "/Cephas Too - Resume.pdf",
+  },
   whatsapp: {
     icon: icons.whatsapp,
     link: `https://wa.me/${phone}`,
