@@ -49,7 +49,10 @@ export const socialsMap: {
   link: string;
   prefix?: string;
   key: string;
-}[] = Object.entries(socials).map(([key, val]) => ({
-  ...val,
-  key,
-}));
+}[] = (() => {
+  const { download, ...soc } = socials;
+  return Object.entries(soc).map(([key, val]) => ({
+    ...val,
+    key,
+  }));
+})();
