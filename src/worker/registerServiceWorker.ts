@@ -28,6 +28,8 @@ const register = async (
         );
       });
     });
+
+    wb.register({ immediate: true });
   } else if (
     process.env.NODE_ENV !== "production" &&
     window.navigator &&
