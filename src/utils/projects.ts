@@ -1,10 +1,16 @@
 import blnng from "../assets/blnng/blnng.png";
 import casa from "../assets/casa/casa.png";
 import ipix from "../assets/ipix/ipix.png";
+import planrr from "../assets/planrr/planrr.png";
 import shyro from "../assets/shyro/shyro.png";
 import twosister from "../assets/twosister/twosister.png";
 
 const projects = {
+  planrr: {
+    name: "Planrr",
+    techs: ["react native", "expo"],
+    images: [planrr],
+  },
   casa: {
     name: "Casa",
     techs: ["react native", "django", "postgres"],
