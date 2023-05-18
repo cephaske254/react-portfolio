@@ -21,6 +21,10 @@ export const socials = {
     icon: icons.fiverr,
     link: "https://www.fiverr.com/cephasktoo",
   },
+  download: {
+    icon: icons.download,
+    link: "/Cephas Too - Resume.pdf",
+  },
   whatsapp: {
     icon: icons.whatsapp,
     link: `https://wa.me/${phone}`,
@@ -45,7 +49,10 @@ export const socialsMap: {
   link: string;
   prefix?: string;
   key: string;
-}[] = Object.entries(socials).map(([key, val]) => ({
-  ...val,
-  key,
-}));
+}[] = (() => {
+  const { download, ...soc } = socials;
+  return Object.entries(soc).map(([key, val]) => ({
+    ...val,
+    key,
+  }));
+})();

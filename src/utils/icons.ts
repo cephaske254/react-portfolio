@@ -5,6 +5,7 @@ const icons = {
   github: "fe:github",
   whatsapp: "ic:round-whatsapp",
   linkedin: "brandico:linkedin-rect",
+  download: "feather:download-cloud",
 };
 
 export default icons;

@@ -11,7 +11,7 @@ generateSW({
   cleanupOutdatedCaches: true,
   navigationPreload: false,
   mode: "production",
-  navigateFallback: "/offline.html",
+  navigateFallback: "/",
   navigateFallbackAllowlist: [],
 
   runtimeCaching: [

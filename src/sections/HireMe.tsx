@@ -1,10 +1,9 @@
-import Button from "@mui/material/Button";
 import Container from "@mui/material/Container";
-import IconButton from "@mui/material/IconButton";
+import MuiIconButton from "@mui/material/IconButton";
 import Link from "@mui/material/Link";
 import Paper from "@mui/material/Paper";
 import Stack from "@mui/material/Stack";
-import { darken, lighten } from "@mui/material/styles";
+import { darken, lighten, styled } from "@mui/material/styles";
 import Typography from "@mui/material/Typography";
 import Iconify from "../components/Iconify";
 import { socials } from "../utils/constants";
@@ -57,29 +56,28 @@ export default function HireMeSection() {
             centerRipple
             LinkComponent={Link}
             href={socials.whatsapp.link}
-            sx={({ palette }) => ({
-              background: palette.primary.main,
-              color: palette.primary.contrastText,
-              "&:hover": {
-                background: darken(palette.primary.main, 0.1),
-              },
-            })}
           >
             <Iconify icon={socials.whatsapp.icon} />
           </IconButton>
-          <Button
-            component={Link}
-            href={socials.fiverr.link}
-            target="_blank"
-            disableElevation
-            sx={{ px: 4 }}
-            // color="success"
-            variant="outlined"
+          <IconButton
+            centerRipple
+            LinkComponent={Link}
+            href={`${socials.mail.prefix ?? ""}${socials.mail.link}`}
           >
-            Fiverr
-          </Button>
+            <Iconify icon={socials.mail.icon} />
+          </IconButton>
         </Stack>
       </Container>
     </Paper>
   );
 }
+
+const IconButton = styled(MuiIconButton)<{
+  href: string;
+}>(({ theme: { palette } }) => ({
+  background: palette.primary.main,
+  color: palette.primary.contrastText,
+  "&:hover": {
+    background: darken(palette.primary.main, 0.1),
+  },
+}));

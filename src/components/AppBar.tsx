@@ -99,9 +99,10 @@ export default function CustomAppBar({
                 size="small"
                 sx={{
                   px: 2,
+                  py: 1,
                   display: {
                     xs: "none",
-                    md: "initial",
+                    md: "flex",
                   },
                 }}
               />
