@@ -23,7 +23,7 @@ const projects = {
   },
   shyro: {
     name: "Shyro",
-    techs: ["flutter"],
+    techs: ["flutter", "hasura"],
     images: [shyro],
   },
   inspireTs: {

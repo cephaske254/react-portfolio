@@ -15,6 +15,14 @@ export const aboutDescription = [
 
 export const email = "cephasktoo@gmail.com";
 export const phone = "+254798950450";
+export const technologies = [
+  "django",
+  "react",
+  "vue",
+  "angular",
+  "react native",
+  "flutter",
+];
 
 export const socials = {
   fiverr: {
@@ -56,3 +64,7 @@ export const socialsMap: {
     key,
   }));
 })();
+
+export const APPBAR = {
+  defaultHeight: 50,
+};

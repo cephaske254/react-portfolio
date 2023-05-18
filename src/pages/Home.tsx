@@ -9,22 +9,13 @@ import CustomAppBar from "../components/AppBar";
 import HireMeButton from "../components/HireMeButton";
 import Iconify from "../components/Iconify";
 import ImageComponent from "../components/ImageComponent";
-import { APPBAR } from "../constants";
 import AboutSection from "../sections/About";
 import FeaturedSection from "../sections/Featured";
 import FooterSection from "../sections/Footer";
 import HireMeSection from "../sections/HireMe";
 import { fonts } from "../theme/typography";
+import { APPBAR, technologies } from "../utils/constants";
 import icons from "../utils/icons";
-
-const technologies = [
-  "django",
-  "react",
-  "vue",
-  "angular",
-  "react native",
-  "flutter",
-];
 
 export default function Home() {
   const [aboutSectionRef, homeSectionRef, portfolioSectionRef, prev] = [

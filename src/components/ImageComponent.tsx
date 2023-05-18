@@ -1,8 +1,8 @@
 import { styled } from "@mui/material/styles";
 import { useEffect, useRef } from "react";
 import me from "../assets/me.png";
-import { APPBAR } from "../constants";
 import useResponsive from "../hooks/useResponsive";
+import { APPBAR } from "../utils/constants";
 
 const Image = styled("img")(
   ({ theme: { breakpoints, transitions, palette } }) => ({
