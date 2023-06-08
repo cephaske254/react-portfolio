@@ -8,8 +8,10 @@ import Typography from "@mui/material/Typography";
 import { Fragment } from "react";
 
 import { fonts, fontWeights } from "../theme/typography";
+import { socials } from "../utils/constants";
 import { pxToRem } from "../utils/getFontValue";
 import HireMeButton from "./HireMeButton";
+import Iconify from "./Iconify";
 
 const AppBar = styled(MuiAppbar)(({ theme: { palette } }) => ({
   backgroundColor: "transparent",
@@ -105,7 +107,11 @@ export default function CustomAppBar({
                     md: "flex",
                   },
                 }}
-              />
+                startIcon={<Iconify icon={socials.download.icon} />}
+                href={socials.download.link}
+              >
+                Resume
+              </HireMeButton>
             </Box>
           </Toolbar>
         </Container>

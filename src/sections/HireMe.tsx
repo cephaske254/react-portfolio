@@ -1,10 +1,11 @@
+import Button from "@mui/material/Button";
 import Container from "@mui/material/Container";
 import MuiIconButton from "@mui/material/IconButton";
 import Link from "@mui/material/Link";
 import Paper from "@mui/material/Paper";
 import Stack from "@mui/material/Stack";
-import { darken, lighten, styled } from "@mui/material/styles";
 import Typography from "@mui/material/Typography";
+import { darken, lighten, styled } from "@mui/material/styles";
 import Iconify from "../components/Iconify";
 import { socials } from "../utils/constants";
 
@@ -52,6 +53,24 @@ export default function HireMeSection() {
           alignItems="center"
           justifyItems="center"
         >
+          <Button
+            centerRipple
+            LinkComponent={Link}
+            href={socials.fiverr.link}
+            startIcon={<Iconify icon={socials.fiverr.icon} />}
+            sx={({ palette }) => ({
+              fontSize: 12,
+              borderRadius: 2,
+              "& .MuiButton-startIcon": {
+                borderRight: `1px solid ${palette.grey.A200}`,
+                paddingRight: 0.5,
+                marginRight: 0.5,
+              },
+            })}
+          >
+            Hire Me
+          </Button>
+
           <IconButton
             centerRipple
             LinkComponent={Link}
@@ -59,6 +78,7 @@ export default function HireMeSection() {
           >
             <Iconify icon={socials.whatsapp.icon} />
           </IconButton>
+
           <IconButton
             centerRipple
             LinkComponent={Link}

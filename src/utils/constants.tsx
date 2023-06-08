@@ -27,7 +27,8 @@ export const technologies = [
 export const socials = {
   fiverr: {
     icon: icons.fiverr,
-    link: "https://www.fiverr.com/cephasktoo",
+    // link: "https://www.fiverr.com/cephasktoo",
+    link: "https://www.fiverr.com/s/3ERAZB",
   },
   download: {
     icon: icons.download,
