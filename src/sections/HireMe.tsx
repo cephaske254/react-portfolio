@@ -53,23 +53,25 @@ export default function HireMeSection() {
           alignItems="center"
           justifyItems="center"
         >
-          <Button
-            centerRipple
-            LinkComponent={Link}
-            href={socials.fiverr.link}
-            startIcon={<Iconify icon={socials.fiverr.icon} />}
-            sx={({ palette }) => ({
-              fontSize: 12,
-              borderRadius: 2,
-              "& .MuiButton-startIcon": {
-                borderRight: `1px solid ${palette.grey.A200}`,
-                paddingRight: 0.5,
-                marginRight: 0.5,
-              },
-            })}
-          >
-            Hire Me
-          </Button>
+          {false && (
+            <Button
+              centerRipple
+              LinkComponent={Link}
+              href={socials.fiverr.link}
+              startIcon={<Iconify icon={socials.fiverr.icon} />}
+              sx={({ palette }) => ({
+                fontSize: 12,
+                borderRadius: 2,
+                "& .MuiButton-startIcon": {
+                  borderRight: `1px solid ${palette.grey.A200}`,
+                  paddingRight: 0.5,
+                  marginRight: 0.5,
+                },
+              })}
+            >
+              Hire Me
+            </Button>
+          )}
 
           <IconButton
             centerRipple
