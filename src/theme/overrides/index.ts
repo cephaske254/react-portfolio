@@ -1,8 +1,8 @@
-import { Theme, ThemeOptions } from "@mui/material/styles";
+import { Theme } from "@mui/material/styles";
 import Button from "./Button";
 import Link from "./Link";
 
-const overrides = (theme: Theme): ThemeOptions["components"] =>
-  Object.assign({}, Button(theme), Link(theme));
+const overrides = (theme: Theme): Theme["components"] =>
+  Object.assign({} as any, Button(theme), Link(theme));
 
 export default overrides;

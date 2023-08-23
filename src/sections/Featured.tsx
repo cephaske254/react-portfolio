@@ -48,7 +48,6 @@ export default function FeaturedSection({
 
 const ImageComponent = ({
   project: { images, name, techs },
-  index,
 }: {
   project: typeof projectList[number];
   index: number;

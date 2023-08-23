@@ -6,7 +6,7 @@ declare module "@mui/material/Button" {
     something: true;
   }
 }
-const Button = (theme: Theme): ThemeOptions["components"] => {
+const Button = (_theme: Theme): ThemeOptions["components"] => {
   return {
     MuiButton: {
       defaultProps: {
