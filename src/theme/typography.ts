@@ -26,6 +26,7 @@ const typography: ThemeOptions["typography"] = {
   fontWeightBold: fontWeights.primary[600],
 
   allVariants: {
+    color: "#fff",
     fontFamily: fonts.primary,
   },
   //
