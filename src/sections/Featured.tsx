@@ -12,7 +12,7 @@ import {
 import { Fragment, ReactNode, useEffect, useRef } from "react";
 import { fonts, fontWeights } from "../theme/typography";
 import { projectList } from "../utils/projects";
-import useGlobalContext from "hooks/useGlobalContext";
+// import useGlobalContext from "hooks/useGlobalContext";
 
 const ImageThumb = styled("img")(() => ({
   width: "100%",
@@ -24,7 +24,7 @@ export default function FeaturedSection({
 }: {
   children?: ReactNode;
 }) {
-  const {hasDownloadedPortfolio} = useGlobalContext();
+  // const {hasDownloadedPortfolio} = useGlobalContext();
 
   return (
     <Fragment>
