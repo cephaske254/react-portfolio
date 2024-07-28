@@ -2,7 +2,6 @@ import { createContext, useCallback, useState } from "react";
 import { enqueueSnackbar, closeSnackbar } from "notistack";
 import IconButton, { IconButtonProps } from "@mui/material/IconButton";
 import { socials } from "utils/constants";
-import DownloadOutlined from "@mui/icons-material/DownloadOutlined";
 import Iconify from "components/Iconify";
 
 const GlobalContext = createContext<GlobalContextType>({
