@@ -1,8 +1,12 @@
 import Box from "@mui/material/Box";
 import Container from "@mui/material/Container";
 import Grid from "@mui/material/Grid";
-import { styled } from "@mui/material/styles";
+import Link from "@mui/material/Link";
+import Button from "@mui/material/Button";
+import Stack from "@mui/material/Stack";
 import Typography from "@mui/material/Typography";
+import { styled } from "@mui/material/styles";
+
 import {
   motion,
   useAnimation,
@@ -12,7 +16,9 @@ import {
 import { Fragment, ReactNode, useEffect, useRef } from "react";
 import { fonts, fontWeights } from "../theme/typography";
 import { projectList } from "../utils/projects";
-// import useGlobalContext from "hooks/useGlobalContext";
+import useGlobalContext from "hooks/useGlobalContext";
+import { socials } from "utils/constants";
+import Iconify from "components/Iconify";
 
 const ImageThumb = styled("img")(() => ({
   width: "100%",
@@ -24,17 +30,39 @@ export default function FeaturedSection({
 }: {
   children?: ReactNode;
 }) {
-  // const {hasDownloadedPortfolio} = useGlobalContext();
+  const { onPortfolioDownload } = useGlobalContext();
 
   return (
     <Fragment>
       <Container sx={{ py: 4 }}>
-        <Typography variant="h3" fontFamily={fonts.primary}>
-          Portfolio
-        </Typography>
-        <Typography variant="caption" fontFamily={fonts.mono} color="grey.600">
-          ~ Featured projects
-        </Typography>
+        <Stack direction="row" alignItems="center">
+          <Typography variant="h3" fontFamily={fonts.primary}>
+            Portfolio
+          </Typography>
+          <Typography
+            variant="caption"
+            fontFamily={fonts.mono}
+            color="grey.600"
+          >
+            ~ Featured projects
+          </Typography>
+          <div style={{ flexGrow: 1 }} />
+
+          <Button
+            underline="hover"
+            color="primary"
+            onClick={onPortfolioDownload}
+            href={socials.portfolio.link}
+            sx={{ cursor: "pointer" }}
+            component={Link}
+            download
+            variant="text"
+            startIcon={<Iconify icon={socials.portfolio.icon} />}
+          >
+            Worksamples
+          </Button>
+        </Stack>
+
         {children}
 
         <Grid container marginTop={2} spacing={2}>

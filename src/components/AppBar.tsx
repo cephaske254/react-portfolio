@@ -57,7 +57,7 @@ export default function CustomAppBar({
 }) {
   return (
     <Fragment>
-      <AppBar elevation={1}>
+      <AppBar elevation={0}>
         <Container>
           <Toolbar disableGutters>
             <Box flexGrow={1}>

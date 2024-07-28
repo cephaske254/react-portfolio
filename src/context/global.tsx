@@ -1,13 +1,25 @@
 import { createContext, useCallback, useState } from "react";
 import { enqueueSnackbar, closeSnackbar } from "notistack";
-import Button from "@mui/material/Button";
+import IconButton, { IconButtonProps } from "@mui/material/IconButton";
 import { socials } from "utils/constants";
+import DownloadOutlined from "@mui/icons-material/DownloadOutlined";
+import Iconify from "components/Iconify";
 
 const GlobalContext = createContext<GlobalContextType>({
   hasDownloadedPortfolio: false,
   onResumeDownloaded() {},
   onPortfolioDownload() {},
 });
+
+const props: IconButtonProps<"a"> = {
+  size: "small",
+  color: "default",
+  sx: {
+    "& svg": {
+      color: "white",
+    },
+  },
+};
 
 export type GlobalContextType = {
   hasDownloadedPortfolio: boolean;
@@ -21,16 +33,6 @@ export function GlobalContextProvider({ children }: React.PropsWithChildren) {
 
   const triggerDownload = useCallback(
     (type: "resume" | "portfolio", callback?: VoidFunction) => {
-      const url =
-        type === "portfolio" ? socials.portfolio.link : socials.resume.link;
-
-      const anchorElement = document.createElement("a");
-      anchorElement.href = url;
-      anchorElement.download = "Cephas Too - Worksamples.pdf";
-
-      anchorElement.click();
-      anchorElement.remove();
-
       (type === "resume" ? setHasDownloadedResume : setHasDownloadedPortfolio)(
         true
       );
@@ -45,20 +47,22 @@ export function GlobalContextProvider({ children }: React.PropsWithChildren) {
       if (!hasDownloadedPortfolio) {
         enqueueSnackbar({
           message: "Click here to download previous work samples too",
-          variant: "default",
-          persist: true,
+          variant: "success",
+          autoHideDuration: 500000,
           action(key) {
             return (
-              <Button
+              <IconButton
                 onClick={() => {
                   triggerDownload("portfolio", function () {
                     closeSnackbar(key);
                   });
                 }}
-                variant="text"
+                href={socials.portfolio.link}
+                download
+                {...props}
               >
-                Download
-              </Button>
+                <Iconify icon={socials.portfolio.icon} />
+              </IconButton>
             );
           },
         });
@@ -70,21 +74,23 @@ export function GlobalContextProvider({ children }: React.PropsWithChildren) {
     triggerDownload("resume", function () {
       if (!hasDownloadedResume) {
         enqueueSnackbar({
-          message: "Click to download resume",
-          variant: "default",
-          persist: true,
+          message: "Click to download resume too",
+          variant: "success",
+          autoHideDuration: 500000,
           action(key) {
             return (
-              <Button
+              <IconButton
                 onClick={() => {
                   triggerDownload("resume", function () {
                     closeSnackbar(key);
                   });
                 }}
-                variant="text"
+                href={socials.resume.link}
+                download
+                {...props}
               >
-                Download
-              </Button>
+                <Iconify icon={socials.portfolio.icon} />
+              </IconButton>
             );
           },
         });

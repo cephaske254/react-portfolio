@@ -8,7 +8,7 @@ const theme: ThemeOptions = {
   palette,
   typography,
   shape: {
-    borderRadius: 8,
+    borderRadius: 10,
   },
 };
 

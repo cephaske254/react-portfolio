@@ -13,7 +13,7 @@ export default function DownloadResumeButton(props?: Partial<ButtonProps>) {
       sx={{ px: 4 }}
       disableElevation
       {...(props as any)}
-      target="_blank"
+      href={props?.href ?? socials.resume.link}
       startIcon={<Iconify icon={socials.resume.icon} />}
       onClick={onResumeDownloaded}
       download
