@@ -47,7 +47,7 @@ export function GlobalContextProvider({ children }: React.PropsWithChildren) {
         enqueueSnackbar({
           message: "Click here to download previous work samples too",
           variant: "success",
-          autoHideDuration: 500000,
+          autoHideDuration: 5000,
           action(key) {
             return (
               <IconButton
@@ -75,7 +75,7 @@ export function GlobalContextProvider({ children }: React.PropsWithChildren) {
         enqueueSnackbar({
           message: "Click to download resume too",
           variant: "success",
-          autoHideDuration: 500000,
+          autoHideDuration: 5000,
           action(key) {
             return (
               <IconButton
