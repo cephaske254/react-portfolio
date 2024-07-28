@@ -12,6 +12,7 @@ import {
 import { Fragment, ReactNode, useEffect, useRef } from "react";
 import { fonts, fontWeights } from "../theme/typography";
 import { projectList } from "../utils/projects";
+import useGlobalContext from "hooks/useGlobalContext";
 
 const ImageThumb = styled("img")(() => ({
   width: "100%",
@@ -23,9 +24,11 @@ export default function FeaturedSection({
 }: {
   children?: ReactNode;
 }) {
+  const {hasDownloadedPortfolio} = useGlobalContext();
+
   return (
     <Fragment>
-      <Container sx={{ py: 4, userSelect: "none" }}>
+      <Container sx={{ py: 4 }}>
         <Typography variant="h3" fontFamily={fonts.primary}>
           Portfolio
         </Typography>
@@ -49,7 +52,7 @@ export default function FeaturedSection({
 const ImageComponent = ({
   project: { images, name, techs },
 }: {
-  project: typeof projectList[number];
+  project: (typeof projectList)[number];
   index: number;
 }) => {
   return (
@@ -100,7 +103,7 @@ const FeaturedItem = ({
   project,
   index,
 }: {
-  project: typeof projectList[number];
+  project: (typeof projectList)[number];
   index: number;
 }) => {
   const disableAnimations = useReducedMotion();

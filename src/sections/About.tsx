@@ -13,15 +13,8 @@ import Typography from "@mui/material/Typography";
 import React, { Fragment } from "react";
 import Iconify from "../components/Iconify";
 import { fonts, fontWeights } from "../theme/typography";
-import { aboutDescription, socials } from "../utils/constants";
+import { aboutDescription, socials, years_of_experience } from "../utils/constants";
 import icons from "../utils/icons";
-
-const getYearsOfExperience = () => {
-  const date = Date.now();
-  const from = new Date("2020-02-28").getTime();
-
-  return Math.round((date - from) / (60 * 60 * 1000 * 24) / 365);
-};
 
 export default function AboutSection({
   children,
@@ -35,7 +28,6 @@ export default function AboutSection({
           sx={{
             pt: 4,
             pb: 5,
-            userSelect: "none",
             px: {
               xs: 2,
               sm: undefined,
@@ -95,11 +87,11 @@ export default function AboutSection({
                 {[
                   {
                     title: "Websites & Webapps",
-                    desc: "I develop back-end & front-end applications with Python Django, Node & GO",
+                    desc: "I develop back-end & front-end applications with React, Vue, Angular, Django, Node & GO",
                   },
                   {
                     title: "Mobile Applications",
-                    desc: "I do iOS and android app development with Flutter and React Native",
+                    desc: "I do iOS and android app development with Flutter and React Native/Expo",
                   },
                 ].map((stack, index) => {
                   return (
@@ -187,7 +179,7 @@ export default function AboutSection({
           >
             {[
               {
-                number: getYearsOfExperience(),
+                number: years_of_experience,
                 descs: ["Years of", "Experience"],
               },
               {
@@ -255,7 +247,7 @@ const sections = [
   { name: "Frontend", items: ["React", "Angular", "Vue", "Ember", "Gatsby"] },
   {
     name: "Backend",
-    items: ["Django", "Flask", "PHP Laravel", "Node Express"],
+    items: ["Django", "Flask", "PHP Laravel", "Node Express", "Go"],
   },
   { name: "Mobile", items: ["React Native", "Flutter", "Expo"] },
 ];

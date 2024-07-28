@@ -6,7 +6,7 @@ import Typography from "@mui/material/Typography";
 import { useInView } from "framer-motion";
 import { Fragment, useEffect, useMemo, useRef } from "react";
 import CustomAppBar from "../components/AppBar";
-import HireMeButton from "../components/HireMeButton";
+import DownloadResumeButton from "../components/DownloadResumeButton";
 import Iconify from "../components/Iconify";
 import ImageComponent from "../components/ImageComponent";
 import AboutSection from "../sections/About";
@@ -69,6 +69,7 @@ export default function Home() {
 
       <Container
         sx={({ breakpoints }) => ({
+          position: "relative",
           height: `100vh`,
           userSelect: "none",
           display: "flex",
@@ -132,9 +133,16 @@ export default function Home() {
 
         <ImageComponent />
 
-        <Box position="absolute" bottom={50} paddingLeft={2}>
-          <Stack direction="row" spacing={2}>
-            <HireMeButton />
+        <Box position="absolute" bottom={50} right={0} left={0} paddingLeft={2}>
+          <Stack
+            direction="row"
+            spacing={2}
+            justifyContent={{
+              xs: "space-around",
+              md: "start",
+            }}
+          >
+            <DownloadResumeButton />
             <Button
               variant="text"
               sx={{ px: 3 }}
