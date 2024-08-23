@@ -1,4 +1,4 @@
-import React, { useRef } from "react";
+import { useRef } from "react";
 import { SnackbarKey, SnackbarProvider } from "notistack";
 // @mui
 import { alpha, useTheme } from "@mui/material/styles";

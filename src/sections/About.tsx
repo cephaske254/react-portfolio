@@ -10,7 +10,7 @@ import Paper from "@mui/material/Paper";
 import Stack from "@mui/material/Stack";
 import { alpha, styled } from "@mui/material/styles";
 import Typography from "@mui/material/Typography";
-import React, { Fragment } from "react";
+import { Fragment } from "react";
 import Iconify from "../components/Iconify";
 import { fonts, fontWeights } from "../theme/typography";
 import { aboutDescription, socials, years_of_experience } from "../utils/constants";
@@ -244,7 +244,7 @@ export default function AboutSection({
 }
 
 const sections = [
-  { name: "Frontend", items: ["React", "Angular", "Vue", "Ember", "Gatsby"] },
+  { name: "Frontend", items: ["React/NextJS", "Angular", "Vue", "Ember", "Javscript/TypeScript"] },
   {
     name: "Backend",
     items: ["Django", "Flask", "PHP Laravel", "Node Express", "Go"],
