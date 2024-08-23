@@ -244,7 +244,7 @@ export default function AboutSection({
 }
 
 const sections = [
-  { name: "Frontend", items: ["React/NextJS", "Angular", "Vue", "Ember", "Javscript/TypeScript"] },
+  { name: "Frontend", items: ["React/NextJS", "Angular", "Vue", "Ember", "Javascript/TypeScript"] },
   {
     name: "Backend",
     items: ["Django", "Flask", "PHP Laravel", "Node Express", "Go"],
