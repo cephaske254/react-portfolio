@@ -34,7 +34,7 @@ export default function FeaturedSection({
 
   return (
     <Fragment>
-      <Container sx={{ py: 4 }}>
+      <Container sx={{ py: 4, overflow: "hidden" }}>
         <Stack direction="row" alignItems="center">
           <Typography variant="h3" fontFamily={fonts.primary}>
             Portfolio
@@ -152,9 +152,10 @@ const FeaturedItem = ({
       sm={12 / 2}
       md={12 / 3}
       position="relative"
-      display="inline-flex"
+      display="flex"
       component={motion.div}
       initial="hidden"
+      overflow="hidden"
       {...(!disableAnimations && {
         animate: controls,
         variants: even ? gridItemVariants : gridItemVariantsOdd,

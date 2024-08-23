@@ -19,12 +19,15 @@ import {
   years_of_experience,
 } from "../utils/constants";
 import icons from "../utils/icons";
+import useResponsive from "hooks/useResponsive";
 
 export default function AboutSection({
   children,
 }: {
   children?: React.ReactNode;
 }) {
+  const isMobile = useResponsive("down", "sm");
+
   return (
     <Fragment>
       <Paper elevation={0} sx={{ borderRadius: 0 }}>
@@ -148,30 +151,52 @@ export default function AboutSection({
             </Typography>
           </Typography>
 
-          <Stack direction="row" justifyContent="space-between">
-            {sections.map((section) => (
-              <Box key={section.name} sx={{ paddingLeft: 0 }}>
-                <List>
-                  {section.items.map((item) => (
-                    <ListItem disablePadding key={item}>
-                      <ListItemText
-                        primaryTypographyProps={{
-                          variant: "body2",
-                          sx: {
-                            color: "grey.500",
-                            fontFamily: fonts.mono,
-                            fontWeight: fontWeights.mono[400],
-                          },
-                        }}
-                      >
-                        {item}
-                      </ListItemText>
-                    </ListItem>
-                  ))}
-                </List>
-              </Box>
-            ))}
-          </Stack>
+          {!isMobile && (
+            <Stack direction="row" justifyContent="space-between">
+              {sections.map((section) => (
+                <Box key={section.name} sx={{ paddingLeft: 0 }}>
+                  <List>
+                    {section.items.map((item) => (
+                      <ListItem disablePadding key={item}>
+                        <ListItemText
+                          primaryTypographyProps={{
+                            variant: "body2",
+                            sx: {
+                              color: "grey.500",
+                              fontFamily: fonts.mono,
+                              fontWeight: fontWeights.mono[400],
+                            },
+                          }}
+                        >
+                          {item}
+                        </ListItemText>
+                      </ListItem>
+                    ))}
+                  </List>
+                </Box>
+              ))}
+            </Stack>
+          )}
+
+          {isMobile && (
+            <Stack direction="row" flexWrap="wrap">
+              {sections_items.map((item) => (
+                <Stack
+                  key={item}
+                  direction="row"
+                  spacing={0.5}
+                  color="grey.500"
+                  alignItems="center"
+                >
+                  <Iconify icon={icons.dot} />
+
+                  <Typography variant="body2" color="grey.500" paddingRight={1}>
+                    {item}
+                  </Typography>
+                </Stack>
+              ))}
+            </Stack>
+          )}
 
           <Box height={40} />
 
@@ -181,16 +206,7 @@ export default function AboutSection({
             px={0}
             justifyContent={{ xs: "space-between", md: "center" }}
           >
-            {[
-              {
-                number: years_of_experience,
-                descs: ["Years of", "Experience"],
-              },
-              {
-                number: 30,
-                descs: ["Projects", "Completed"],
-              },
-            ].map((info, index) => (
+            {cards.map((info, index) => (
               <Box
                 key={index}
                 sx={{
@@ -248,16 +264,28 @@ export default function AboutSection({
 }
 
 const sections = [
-  {
-    name: "Frontend",
-    items: ["React/NextJS", "Angular", "Vue", "Ember", "Javascript"],
-  },
+  { name: "Frontend", items: ["React", "Angular", "Vue", "Ember", "Gatsby"] },
   {
     name: "Backend",
     items: ["Django", "Flask", "PHP Laravel", "Node Express", "Go"],
   },
-  { name: "Mobile", items: ["React Native", "Flutter", "Expo", "Typescript"] },
+  { name: "Mobile", items: ["React Native", "Flutter", "Expo"] },
 ];
+
+const sections_items = sections.reduce((acc, section) => {
+  return [...acc, ...section.items];
+}, [] as string[]);
+
+const cards = [
+  {
+    number: years_of_experience,
+    descs: ["Years of", "Experience"],
+  },
+  {
+    number: 30,
+    descs: ["Projects", "Completed"],
+  },
+] as const;
 
 const Span = styled("span")(({ theme: { palette } }) => ({
   borderColor: palette.primary.main,

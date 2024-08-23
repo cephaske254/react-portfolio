@@ -24,6 +24,10 @@ function SnackbarStyles() {
           margin: theme.spacing(0.25, 0),
           boxShadow: theme.shadows["8"],
           borderRadius: theme.shape.borderRadius * 2,
+          display: "flex",
+          alignItems: "center",
+          flexDirection: "row",
+          flexWrap: "nowrap",
           "&.notistack-MuiContent-success, &.notistack-MuiContent-error, &.notistack-MuiContent-warning, &.notistack-MuiContent-info":
             {
               color: theme.palette.common.white,
@@ -34,13 +38,6 @@ function SnackbarStyles() {
           },
         },
         fontWeight: theme.typography.fontWeightMedium,
-
-        "& .content": {
-          paddingRight: theme.spacing(2),
-          [theme.breakpoints.up("md")]: {
-            paddingRight: theme.spacing(3),
-          },
-        },
       }}
     />
   );

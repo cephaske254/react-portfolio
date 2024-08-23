@@ -6,6 +6,7 @@ const icons = {
   whatsapp: "ic:round-whatsapp",
   linkedin: "brandico:linkedin-rect",
   download: "feather:download-cloud",
+  dot: "mdi:circle-small",
 
   // snackbar
   snackbar_info: "eva:info-fill",
