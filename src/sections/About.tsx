@@ -13,7 +13,11 @@ import Typography from "@mui/material/Typography";
 import { Fragment } from "react";
 import Iconify from "../components/Iconify";
 import { fonts, fontWeights } from "../theme/typography";
-import { aboutDescription, socials, years_of_experience } from "../utils/constants";
+import {
+  aboutDescription,
+  socials,
+  years_of_experience,
+} from "../utils/constants";
 import icons from "../utils/icons";
 
 export default function AboutSection({
@@ -244,12 +248,15 @@ export default function AboutSection({
 }
 
 const sections = [
-  { name: "Frontend", items: ["React/NextJS", "Angular", "Vue", "Ember", "Javascript/TypeScript"] },
+  {
+    name: "Frontend",
+    items: ["React/NextJS", "Angular", "Vue", "Ember", "Javascript"],
+  },
   {
     name: "Backend",
     items: ["Django", "Flask", "PHP Laravel", "Node Express", "Go"],
   },
-  { name: "Mobile", items: ["React Native", "Flutter", "Expo"] },
+  { name: "Mobile", items: ["React Native", "Flutter", "Expo", "Typescript"] },
 ];
 
 const Span = styled("span")(({ theme: { palette } }) => ({
