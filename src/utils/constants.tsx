@@ -4,7 +4,7 @@ export const years_of_experience = new Date().getFullYear() - 2020;
 
 export const aboutDescription = [
   <>
-    A creative full-stack developer with <strong>4+</strong> years of experience
+    A creative full-stack developer with <strong>{years_of_experience}+</strong> years of experience
     adept at working both remotely and in-office.
   </>,
   <>
